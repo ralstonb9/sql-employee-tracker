@@ -19,6 +19,6 @@ CREATE Table employee (
     id INT PRIMARY KEY,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
-    FOREIGN KEY (role_id) REFERENCES role(id),
-    FOREIGN KEY (manager_id) REFERENCES employee(id)
+    FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE set null,
+    FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE set null
 );
