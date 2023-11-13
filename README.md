@@ -14,11 +14,11 @@ For this weeks challenge the task was to create a command line application to ma
 
 ## Screenshot
 
-![Departments Table]()
+![Departments Table](/images/department-table.png)
 
-![Roles Table]()
+![Roles Table](/images/role-table.png)
 
-![Employees Table]()
+![Employees Table](/images/employee-table.png)
 
 ## Demonstration
 

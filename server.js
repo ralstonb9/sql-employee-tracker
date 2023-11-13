@@ -60,9 +60,6 @@ function menu() {
 function viewDepartments() {
   db.query("SELECT department_name, id FROM department", (err, rows) => {
     if (err) throw err;
-    rows.forEach((department) => {
-      departmentNames.push(department.department_name);
-    });
     console.table(rows);
     menu();
   });
@@ -73,9 +70,6 @@ function viewRoles() {
     "SELECT role.title, role.id, role.salary, department.department_name as department FROM role Join department On role.department_id = department.id",
     (err, rows) => {
       if (err) throw err;
-      rows.forEach((role) => {
-        roleNames.push(role.title);
-      });
       console.table(rows);
       menu();
     }
@@ -256,10 +250,14 @@ function updateEmployee() {
                     choices: roleNames,
                 },
             ]).then((answer) => {
-                db.query('UPDATE')
-            })
+                db.query('UPDATE employee SET role_id = ? WHERE id = ?', [answer.role, answer.employee], err => {
+                    if (err) throw err;
+                    console.log('Employee role successfully updated.');
+                    menu();
+                });
+            });
         });
-    })
+    });
 }
 
 menu();
